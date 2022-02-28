@@ -14,6 +14,7 @@
 		6B2FE5CA27CD824000484831 /* RemoteJSONTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2FE5C927CD824000484831 /* RemoteJSONTests.swift */; };
 		6B2FE5D427CD824000484831 /* RemoteJSONUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2FE5D327CD824000484831 /* RemoteJSONUITests.swift */; };
 		6B2FE5D627CD824000484831 /* RemoteJSONUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2FE5D527CD824000484831 /* RemoteJSONUITestsLaunchTests.swift */; };
+		6B2FE5E327CD874F00484831 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2FE5E227CD874F00484831 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		6B2FE5CF27CD824000484831 /* RemoteJSONUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RemoteJSONUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B2FE5D327CD824000484831 /* RemoteJSONUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteJSONUITests.swift; sourceTree = "<group>"; };
 		6B2FE5D527CD824000484831 /* RemoteJSONUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteJSONUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		6B2FE5E227CD874F00484831 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			children = (
 				6B2FE5B827CD823F00484831 /* RemoteJSONApp.swift */,
 				6B2FE5BA27CD823F00484831 /* ContentView.swift */,
+				6B2FE5E227CD874F00484831 /* User.swift */,
 				6B2FE5BC27CD824000484831 /* Assets.xcassets */,
 				6B2FE5BE27CD824000484831 /* Preview Content */,
 			);
@@ -259,6 +262,7 @@
 			files = (
 				6B2FE5BB27CD823F00484831 /* ContentView.swift in Sources */,
 				6B2FE5B927CD823F00484831 /* RemoteJSONApp.swift in Sources */,
+				6B2FE5E327CD874F00484831 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
