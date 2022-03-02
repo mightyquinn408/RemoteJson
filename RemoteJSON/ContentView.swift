@@ -2,67 +2,46 @@
 //  ContentView.swift
 //  RemoteJSON
 //
-//  Created by Michael Quinn on 2/28/22.
+//  Created by Michael Quinn on 3/1/22.
 //
 
 import SwiftUI
 
-struct Response: Codable {
-    var results: [Result]
-}
-
-struct Result: Codable {
-    var trackId: Int
-    var trackName: String
-    var collectionName: String
-}
-
 struct ContentView: View {
-    @State private var results = [Result]()
-
-    var body: some View {
-        VStack {
-            AsyncImage(url: URL(string: "https://hws.dev/img/logo.png")) { phase in
-                if let image = phase.image {
-                    image
-                        .resizable()
-                        .scaledToFit()
-                } else if phase.error != nil {
-                    Text("There was an error loading the image.")
-                } else {
-                    ProgressView()
-                }
-            }
-            .frame(width: 200, height: 200)
-            
-            FormView()
-            
-            List(results, id: \.trackId) { item in
-                VStack(alignment: .leading) {
-                    Text(item.trackName)
-                        .font(.headline)
-                    Text(item.collectionName)
-                }
-            }.task {
-                await loadData()
-        }
-        }
-    }
+    @StateObject var order = Order()
     
-    func loadData() async {
-        guard let url = URL(string: "https://itunes.apple.com/search?term=taylor+swift&entity=song") else {
-            print("Invalid URL")
-            return
-        }
-        
-        do {
-            let (data, _) = try await URLSession.shared.data(from: url)
+    var body: some View {
+        NavigationView {
+            Form {
+                Section {
+                    Picker("Select your cake type", selection: $order.type) {
+                        ForEach(Order.types.indices) {
+                            Text(Order.types[$0])
+                        }
+                    }
 
-            if let decodedResponse = try? JSONDecoder().decode(Response.self, from: data) {
-                results = decodedResponse.results
+                    Stepper("Number of cakes: \(order.quantity)", value: $order.quantity, in: 3...20)
+                }
+                
+                Section {
+                    Toggle("Any special requests?", isOn: $order.specialRequestEnabled.animation())
+
+                    if order.specialRequestEnabled {
+                        Toggle("Add extra frosting", isOn: $order.extraFrosting)
+
+                        Toggle("Add extra sprinkles", isOn: $order.addSprinkles)
+                    }
+                }
+                
+                Section {
+                    NavigationLink {
+                        AddressView(order: order)
+                    } label: {
+                        Text("Delivery details")
+                    }
+                }
             }
-        } catch {
-            print("Invalid data")
+            .navigationTitle("Cupcake Corner")
         }
     }
 }
